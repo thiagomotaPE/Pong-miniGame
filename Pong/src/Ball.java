@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Ball {
     public double x, y, dx, dy;
-    public double speed = 3;
+    public double speed = 4;
     public int width, height;
 
     public Ball(int x, int y) {
@@ -12,20 +12,27 @@ public class Ball {
         this.width = 15;
         this.height = 15;
 
-        dx = new Random().nextGaussian();
-        dy = new Random().nextGaussian();
+        int angle = new Random().nextInt(359);
+        dx = Math.cos(Math.toRadians(angle));
+        dy = Math.sin(Math.toRadians(angle));
     }
     public void tick() {
-        if(y + (dy*speed) + height >= Game.HEIGHT) {
-            dy*= 1;
+        if(y + (dy*speed) + height >= Game.HEIGHT*Game.SCALE) {
+            dy*= -1;
         }else if(y + (dy*speed) < 0) {
             dy*= -1;
         }
 
-        if(x >= Game.WIDTH) {
-            //ponto do inimigo
-        }else if(x < 0) {
+        if(x >= Game.WIDTH*Game.SCALE) {
             //ponto do jogador
+            System.out.println("ponto do jogador");
+            new Game();
+            return;
+        }else if(x < 0) {
+            //ponto do inimigo
+            System.out.println("ponto do inimigo");
+            new Game();
+            return;
         }
 
         Rectangle bounds = new Rectangle((int)(x + (dx*speed)), (int)(y + (dy*speed)), width, height);
@@ -37,8 +44,6 @@ public class Ball {
         }else if(bounds.intersects(boundsEnemy)) {
             dx*= -1;
         }
-
-
 
         x += dx*speed;
         y += dy*speed;

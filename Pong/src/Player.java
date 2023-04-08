@@ -3,6 +3,7 @@ import java.awt.*;
 public class Player {
 
     public boolean top, bottom;
+    public double speed = 2.5;
     public int x, y, width, height;
 
     public Player(int x, int y) {
@@ -13,13 +14,13 @@ public class Player {
     }
     public void tick() {
         if(top) {
-            y--;
+            y -= speed;
         }else if(bottom) {
-            y++;
+            y+= speed;
         }
         if(y + height < Game.HEIGHT - 120) {
-            y = Game.HEIGHT + height + 220;
-        }else if(y + height > Game.HEIGHT + 500) {
+            y = Game.HEIGHT + height + 90;
+        }else if(y + height > Game.HEIGHT + 380) {
             y = Game.HEIGHT + height - 400;
         }
     }
