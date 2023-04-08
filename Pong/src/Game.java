@@ -14,12 +14,14 @@ public class Game extends Canvas implements Runnable, KeyListener {
     public BufferedImage layer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
     public Player player;
+    public Enemy enemy;
 
     public Game() {
         this.setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
         this.addKeyListener(this);
 
         player = new Player(0, 160);
+        enemy = new Enemy(WIDTH*SCALE-30, 160);
     }
     public static void main(String[] args) {
         Game game = new Game();
@@ -52,6 +54,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         g.drawImage(layer, 0, 0, WIDTH*SCALE, HEIGHT*SCALE, null);
 
         player.render(g);
+        enemy.render(g);
 
         bs.show();
     }
