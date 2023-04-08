@@ -15,6 +15,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
     public Player player;
     public Enemy enemy;
+    public Ball ball;
 
     public Game() {
         this.setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
@@ -22,6 +23,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         player = new Player(0, 160);
         enemy = new Enemy(WIDTH*SCALE-30, 160);
+        ball = new Ball(WIDTH*2-15, HEIGHT*2-15);
     }
     public static void main(String[] args) {
         Game game = new Game();
@@ -38,7 +40,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
     }
 
     public void tick() {
+
         player.tick();
+        enemy.tick();
+        ball.tick();
     }
 
     public void render() {
@@ -55,6 +60,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         player.render(g);
         enemy.render(g);
+        ball.render(g);
 
         bs.show();
     }

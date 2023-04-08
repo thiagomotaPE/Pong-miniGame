@@ -1,7 +1,6 @@
 import java.awt.*;
 
 public class Enemy {
-
     public double x, y;
     public int width, height;
 
