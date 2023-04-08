@@ -11,7 +11,7 @@ public class Ball {
         this.y = y;
         this.width = 15;
         this.height = 15;
-        int angle = new Random().nextInt(45 - 20) + 20 + 1;
+        int angle = new Random().nextInt(50 - 20) + 20 + 1;
         dx = Math.cos(Math.toRadians(angle));
         dy = Math.sin(Math.toRadians(angle));
     }
@@ -39,16 +39,16 @@ public class Ball {
         Rectangle boundsEnemy = new Rectangle((int)Game.enemy.x, (int)Game.enemy.y, Game.enemy.width, Game.enemy.height);
 
         if(bounds.intersects(boundsPlayer)) {
-            int angle = new Random().nextInt(45 - 20) + 20 + 1;
+            int angle = new Random().nextInt(45 - 10) + 10 + 1;
             dx = Math.cos(Math.toRadians(angle));
             dy = Math.sin(Math.toRadians(angle));
-            if(dx > 0)
+            if(dx > 1)
                 dx*= -1;
         }else if(bounds.intersects(boundsEnemy)) {
-            int angle = new Random().nextInt(45 - 20) + 20 + 1;
+            int angle = new Random().nextInt(45 - 10) + 10 + 1;
             dx = Math.cos(Math.toRadians(angle));
             dy = Math.sin(Math.toRadians(angle));
-            if(dx < 0)
+            if(dx < 1)
                 dx*= -1;
         }
 

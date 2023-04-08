@@ -11,11 +11,11 @@ public class Enemy {
         this.height = 140;
     }
     public void tick() {
-        y += (Game.ball.y - y - 6) * 0.1;
+        y += (Game.ball.y - y - 6) * 0.07;
 
     }
     public void render(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(Color.GRAY);
         g.fillRect((int)x, (int)y, width, height);
     }
 }
